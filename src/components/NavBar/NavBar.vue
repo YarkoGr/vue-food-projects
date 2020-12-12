@@ -29,6 +29,10 @@ export default {
           name: "Countrys",
           path: "/country",
         },
+        {
+          name: "Meals",
+          path: "/meals",
+        },
       ],
     };
   },

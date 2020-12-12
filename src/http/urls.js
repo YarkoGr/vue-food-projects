@@ -6,8 +6,8 @@ const mealUrls = {
     searchName: `${BASE_MEAL_URL}/${api_key}/search.php?s=`,
     categoriesList: `${BASE_MEAL_URL}/${api_key}/list.php?c=list`,
     areaList: `${BASE_MEAL_URL}/${api_key}/list.php?a=list`,
-    areaMeals: `${BASE_MEAL_URL}/${api_key}/filter.php?a=`,
     ingredientsList: `${BASE_MEAL_URL}/${api_key}/list.php?i=list`,
+    areaMeals: `${BASE_MEAL_URL}/${api_key}/filter.php?a=`,
     allCategories: `${BASE_MEAL_URL}/${api_key}/categories.php`,
     lookup: `${BASE_MEAL_URL}/${api_key}/lookup.php?i=`,
 };
