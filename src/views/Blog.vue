@@ -19,8 +19,5 @@ export default {
 .blog {
   @include flex(center, center, column, nowrap);
   height: 100%;
-  background-image: url("~@/assets/img/home-bgrd.png");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 </style>

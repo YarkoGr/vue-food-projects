@@ -4,7 +4,9 @@ import Home from "../views/Home.vue";
 import { routesPath, routesNames } from "./routes";
 
 const Blog = () =>
-    import ( /* webpackChunkName: "about" */ "../views/Blog");
+    import ( /* webpackChunkName: "blog" */ "../views/Blog");
+const Country = () =>
+    import ( /* webpackChunkName: "country" */ "../views/Country.vue");
 
 Vue.use(VueRouter);
 
@@ -17,6 +19,11 @@ const routes = [{
         name: routesNames.blog,
         path: routesPath.blog,
         component: Blog,
+    },
+    {
+        name: routesNames.country,
+        path: routesPath.country,
+        component: Country,
     },
     // {
     //   path: '/about',

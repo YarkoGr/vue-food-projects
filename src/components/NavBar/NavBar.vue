@@ -25,6 +25,10 @@ export default {
           name: "Blog",
           path: "/blog",
         },
+        {
+          name: "Countrys",
+          path: "/country",
+        },
       ],
     };
   },
@@ -35,7 +39,7 @@ export default {
   @include flex(center, center);
   margin-bottom: 0;
   &__item {
-    padding-right: 10px;
+    padding-right: 15px;
     &:last-child {
       padding-right: 0;
     }

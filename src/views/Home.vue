@@ -25,9 +25,7 @@ export default {
 .home {
   @include flex(space-between, center);
   height: 100%;
-  background-image: url("~@/assets/img/home-bgrd.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+
   &__img {
     max-height: 420px;
   }

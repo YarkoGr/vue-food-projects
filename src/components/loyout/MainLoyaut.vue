@@ -4,7 +4,7 @@
       <div class="main-layout__header-wrapper container">
         <img
           class="main-layout__header-logo"
-          src="../../assets/FoodLogo.png"
+          src="../../assets/img/FoodLogo.png"
           alt=""
         />
         <nav-bar></nav-bar>
@@ -42,7 +42,7 @@ export default {
     &::after {
       content: "";
       position: absolute;
-      background-image: url("~@/assets/corner.png");
+      background-image: url("~@/assets/img/corner.png");
       background-repeat: no-repeat;
       @include size(125px);
       top: 0;
@@ -63,6 +63,9 @@ export default {
   }
   &__main-content {
     height: 100%;
+    background-image: url("~@/assets/img/home-bgrd.png");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   &__footer {
     background-color: $bg-footer;
