@@ -2,27 +2,27 @@
   <div class="blog">
     <div class="blog__videos">
       <iframe
+        allowfullscreen
         src="https://www.youtube.com/embed/sTdQY_gxZzg"
         frameborder="0"
-        ng-show="showvideo"
       >
       </iframe>
       <iframe
+        allowfullscreen
         src="https://www.youtube.com/embed/PElfbOeb-R8"
         frameborder="0"
-        ng-show="showvideo"
       >
       </iframe>
       <iframe
+        allowfullscreen
         src="https://www.youtube.com/embed/hLdZdVziw7o"
         frameborder="0"
-        ng-show="showvideo"
       >
       </iframe>
       <iframe
+        allowfullscreen
         src="https://www.youtube.com/embed/BL2giVpixV0"
         frameborder="0"
-        ng-show="showvideo"
       >
       </iframe>
     </div>

@@ -6,7 +6,7 @@
         v-for="area in areasList"
         :key="area.strArea"
       >
-        <h3>{{ area.strArea }}</h3>
+        <span class="area__list-item-title">{{ area.strArea }}</span>
         <a-card
           hoverable
           style="width: 40px"
@@ -17,11 +17,7 @@
             })
           "
         >
-          <img
-            slot="cover"
-            alt="example"
-            src="https://www.themealdb.com/images/ingredients/Lime.png"
-          />
+          <img slot="cover" alt="example" src="../assets/flags/American.png" />
         </a-card>
       </div>
     </div>
@@ -50,8 +46,12 @@ export default {
 
 <style lang="scss">
 .country {
-  @include flex(center, center);
-  padding: 50px;
-  color: $main-color;
+  &__list {
+    @include flex(center, center, $wrap: wrap);
+    color: $main-color;
+  }
+  &__list-item {
+    padding: 50px;
+  }
 }
 </style>
