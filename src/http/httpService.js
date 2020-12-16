@@ -14,20 +14,20 @@ class HttpService {
     getAreaList = () => this._fetchData(mealUrls.areaList);
     getAreaMeals = (country) =>
         this._fetchData(`${mealUrls.areaMeals}${country}`);
-    getCategories = async() => {
-        const { meal: ingredientsList } = await this._fetchData(
-            mealUrls.ingredientsList
-        );
-        const { meal: areaList } = await this._fetchData(mealUrls.areaList);
-        const { meal: categoriesList } = await this._fetchData(
-            mealUrls.categoriesList
-        );
-        return {
-            ingredientsList,
-            areaList,
-            categoriesList,
-        };
-    };
+    // getCategories = async() => {
+    //     const { meal: ingredientsList } = await this._fetchData(
+    //         mealUrls.ingredientsList
+    //     );
+    //     const { meal: areaList } = await this._fetchData(mealUrls.areaList);
+    //     const { meal: categoriesList } = await this._fetchData(
+    //         mealUrls.categoriesList
+    //     );
+    //     return {
+    //         ingredientsList,
+    //         areaList,
+    //         categoriesList,
+    //     };
+    // };
     getSearchMealByName = (query) =>
         this._fetchData(`${mealUrls.searchName}${query}`);
 

@@ -4,6 +4,7 @@ export const routesNames = {
     country: "Country",
     meals: "Meals",
     countryMealsList: "CountryMealsList",
+    mealRecipe: "MealRecipe",
 };
 
 export const routesPath = {
@@ -11,5 +12,6 @@ export const routesPath = {
     blog: "/blog",
     country: "/country",
     meals: "/meals",
-    countryMealsList: "/meals/:country",
+    countryMealsList: "/country/:country",
+    mealRecipe: "/recipe/:id",
 };

@@ -21,9 +21,7 @@ export default {
       randomMeal: {},
       filters: {
         categories: [],
-        glasses: [],
         ingredients: [],
-        alcoholic: [],
       },
     };
   },

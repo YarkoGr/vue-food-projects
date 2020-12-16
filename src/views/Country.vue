@@ -1,15 +1,14 @@
 <template>
   <div class="country">
-    <div class="country__list">
-      <div
-        class="area__list-item"
+    <ul class="country__list">
+      <li
+        hoverable
+        class="country__list-item"
         v-for="area in areasList"
         :key="area.strArea"
       >
-        <span class="area__list-item-title">{{ area.strArea }}</span>
-        <a-card
-          hoverable
-          style="width: 40px"
+        <a
+          class="country__list-item-link"
           @click="
             $router.push({
               name: 'CountryMealsList',
@@ -17,10 +16,15 @@
             })
           "
         >
-          <img slot="cover" alt="example" src="../assets/flags/American.png" />
-        </a-card>
-      </div>
-    </div>
+          <span class="country__list-item-title">{{ area.strArea }}</span>
+          <img
+            slot="cover"
+            alt="example"
+            :src="require(`@/assets/flags/${area.strArea}.png`)"
+          />
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -33,8 +37,7 @@ export default {
   },
   data() {
     return {
-      areasList: {},
-      areaMeals: "",
+      areasList: "",
     };
   },
   async created() {
@@ -46,12 +49,27 @@ export default {
 
 <style lang="scss">
 .country {
+  @include flex(center, center);
+  height: 100%;
   &__list {
     @include flex(center, center, $wrap: wrap);
-    color: $main-color;
   }
   &__list-item {
-    padding: 50px;
+    margin-right: 50px;
+  }
+  &__list-item-link {
+    @include flex(center, center, column);
+    padding: 5px;
+    &:hover {
+      background-color: $main-color;
+      border-radius: 10px;
+    }
+    &:hover > span {
+      color: $black;
+    }
+  }
+  &__list-item-title {
+    color: $main-color;
   }
 }
 </style>

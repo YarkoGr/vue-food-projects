@@ -14,6 +14,11 @@ const CountryMealsList = () =>
         /* webpackChunkName: "countryMealsList" */
         "../views/CountryMealsList.vue"
     );
+const MealRecipe = () =>
+    import (
+        /* webpackChunkName: "mealRecipe" */
+        "../views/MealRecipe.vue"
+    );
 
 Vue.use(VueRouter);
 
@@ -41,6 +46,11 @@ const routes = [{
         name: routesNames.countryMealsList,
         path: routesPath.countryMealsList,
         component: CountryMealsList,
+    },
+    {
+        name: routesNames.mealRecipe,
+        path: routesPath.mealRecipe,
+        component: MealRecipe,
     },
     // {
     //   path: '/about',
