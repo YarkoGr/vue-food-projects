@@ -14,6 +14,10 @@ class HttpService {
     getAreaList = () => this._fetchData(mealUrls.areaList);
     getAreaMeals = (country) =>
         this._fetchData(`${mealUrls.areaMeals}${country}`);
+    getMealById = (id) => this._fetchData(`${mealUrls.lookupId}${id}`);
+    getAllCategorys = () => this._fetchData(mealUrls.allCategories);
+    getTest = (category) =>
+        this._fetchData(`${mealUrls.categoriesMeals}${category}`);
     // getCategories = async() => {
     //     const { meal: ingredientsList } = await this._fetchData(
     //         mealUrls.ingredientsList
@@ -30,8 +34,6 @@ class HttpService {
     // };
     getSearchMealByName = (query) =>
         this._fetchData(`${mealUrls.searchName}${query}`);
-
-    getMealById = (id) => this._fetchData(`${mealUrls.lookup}${id}`);
 }
 
 export const httpService = new HttpService();

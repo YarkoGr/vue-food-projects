@@ -3,13 +3,13 @@ const api_key = "1";
 
 const mealUrls = {
     random: `${BASE_MEAL_URL}/${api_key}/random.php`,
-    searchName: `${BASE_MEAL_URL}/${api_key}/search.php?s=`,
-    categoriesList: `${BASE_MEAL_URL}/${api_key}/list.php?c=list`,
     areaList: `${BASE_MEAL_URL}/${api_key}/list.php?a=list`,
-    ingredientsList: `${BASE_MEAL_URL}/${api_key}/list.php?i=list`,
     areaMeals: `${BASE_MEAL_URL}/${api_key}/filter.php?a=`,
+    lookupId: `${BASE_MEAL_URL}/${api_key}/lookup.php?i=`,
     allCategories: `${BASE_MEAL_URL}/${api_key}/categories.php`,
-    lookup: `${BASE_MEAL_URL}/${api_key}/lookup.php?i=`,
+    categoriesMeals: `${BASE_MEAL_URL}/${api_key}/filter.php?c=`,
+    ingredientsList: `${BASE_MEAL_URL}/${api_key}/list.php?i=list`,
+    searchName: `${BASE_MEAL_URL}/${api_key}/search.php?s=`,
 };
 
 export { mealUrls };

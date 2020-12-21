@@ -16,7 +16,14 @@
             })
           "
         >
-          <span class="country__list-item-title">{{ area.strArea }}</span>
+          <span
+            v-if="area.strArea === 'Unknown'"
+            class="country__list-item-title"
+            >Slovakia</span
+          >
+          <span v-else class="country__list-item-title">{{
+            area.strArea
+          }}</span>
           <img
             slot="cover"
             alt="example"
@@ -32,17 +39,23 @@
 import { httpService } from "../http/httpService";
 export default {
   name: "Country",
-  methods: {
-    selectCountry() {},
-  },
+  // methods: {
+  //   const {findUnknow} = () => {
+  //     if (this.areasList === "Unknow"){
+
+  //     }
+  //   },
+  // },
   data() {
     return {
       areasList: "",
     };
   },
+
   async created() {
     const areas = await httpService.getAreaList();
     this.areasList = areas.meals;
+    console.log(this.areasList);
   },
 };
 </script>

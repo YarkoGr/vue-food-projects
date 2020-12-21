@@ -30,6 +30,10 @@ export default {
           path: "/country",
         },
         {
+          name: "Categories",
+          path: "/categories",
+        },
+        {
           name: "Meals",
           path: "/meals",
         },
