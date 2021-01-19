@@ -1,15 +1,13 @@
 <template>
   <div class="app">
     <main-layout>
-      <!-- <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link> -->
       <router-view />
     </main-layout>
   </div>
 </template>
 
 <script>
-import MainLayout from "./components/loyout/MainLoyaut";
+import MainLayout from "./components/loyout/MainLayout.vue";
 
 export default {
   components: {

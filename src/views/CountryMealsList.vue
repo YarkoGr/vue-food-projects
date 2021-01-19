@@ -1,7 +1,7 @@
 <template>
   <div class="countryMealsList">
     <span class="countryMealsList__title">{{ $route.params.country }}</span>
-    <ul class="countryMealsList__list">
+    <ul class="countryMealsList__list container">
       <li
         class="countryMealsList__list-item"
         v-for="meals in areaMeals"
@@ -13,7 +13,7 @@
           })
         "
       >
-        <a-card>
+        <a-card hoverable style="max-width: 240px">
           <img slot="cover" alt="example" :src="meals.strMealThumb" />
         </a-card>
         <span class="countryMealsList__list-item-title">{{
@@ -43,4 +43,5 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../styles/views/CountryMealsList.scss";
 </style>

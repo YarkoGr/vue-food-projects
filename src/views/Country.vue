@@ -1,6 +1,6 @@
 <template>
   <div class="country">
-    <ul class="country__list">
+    <ul class="country__list container">
       <li
         hoverable
         class="country__list-item"
@@ -39,13 +39,7 @@
 import { httpService } from "../http/httpService";
 export default {
   name: "Country",
-  // methods: {
-  //   const {findUnknow} = () => {
-  //     if (this.areasList === "Unknow"){
 
-  //     }
-  //   },
-  // },
   data() {
     return {
       areasList: "",
@@ -65,17 +59,18 @@ export default {
   @include flex(center, center);
   height: 100%;
   &__list {
-    @include flex(center, center, $wrap: wrap);
+    @include flex(start, start, $wrap: wrap);
   }
   &__list-item {
-    margin-right: 50px;
+    padding: 0 25px;
   }
   &__list-item-link {
     @include flex(center, center, column);
     padding: 5px;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
     &:hover {
       background-color: $main-color;
-      border-radius: 10px;
     }
     &:hover > span {
       color: $black;
