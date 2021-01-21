@@ -26,7 +26,7 @@ export default {
           path: "/blog",
         },
         {
-          name: "Countrys",
+          name: "Countries",
           path: "/country",
         },
         {
@@ -54,6 +54,9 @@ export default {
   }
   &__item-link {
     @include text($h32, 400, $text-color);
+    &:focus {
+      color: #1890ff;
+    }
   }
 }
 </style>

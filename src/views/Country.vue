@@ -49,7 +49,6 @@ export default {
   async created() {
     const areas = await httpService.getAreaList();
     this.areasList = areas.meals;
-    console.log(this.areasList);
   },
 };
 </script>
@@ -62,7 +61,8 @@ export default {
     @include flex(start, start, $wrap: wrap);
   }
   &__list-item {
-    padding: 0 25px;
+    padding: 15px;
+    width: calc(100% / 24 * 4);
   }
   &__list-item-link {
     @include flex(center, center, column);

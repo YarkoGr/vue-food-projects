@@ -10,6 +10,7 @@ const mealUrls = {
     categoriesMeals: `${BASE_MEAL_URL}/${api_key}/filter.php?c=`,
     ingredientsList: `${BASE_MEAL_URL}/${api_key}/list.php?i=list`,
     searchName: `${BASE_MEAL_URL}/${api_key}/search.php?s=`,
+    latestMeals: `${BASE_MEAL_URL}/${api_key}/latest.php`,
 };
 
 export { mealUrls };

@@ -1,11 +1,13 @@
 <template>
   <div class="the-header">
     <div class="the-header__wrapper">
-      <img
-        class="the-header__logo"
-        src="../../assets/img/FoodLogo.png"
-        alt=""
-      />
+      <a href="/">
+        <img
+          class="the-header__logo"
+          src="../../assets/img/FoodLogo.png"
+          alt=""
+        />
+      </a>
       <nav-bar />
     </div>
   </div>
@@ -39,10 +41,11 @@ export default {
     right: 0;
   }
   &__wrapper {
-    @include flex();
+    @include flex(space-between);
+    padding: 0 140px;
   }
   &__logo {
-    margin: 0 50px 0 100px;
+    margin-right: 60px;
   }
 }
 </style>

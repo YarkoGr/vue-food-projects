@@ -5,7 +5,10 @@
       src="../assets/img/Home-left.png"
       alt="home-mael-left"
     />
-    <h1 class="home__title">Food from around the world</h1>
+    <div class="home__wrapper">
+      <h1 class="home__title">Food from around the world</h1>
+      <the-carousel />
+    </div>
     <img
       class="home__img"
       src="../assets/img/Home-right.png"
@@ -15,7 +18,9 @@
 </template>
 
 <script>
+import TheCarousel from "../components/carousel/TheCarousel.vue";
 export default {
+  components: { TheCarousel },
   name: "Home",
 };
 </script>
@@ -31,6 +36,9 @@ export default {
     @include text($h80, 400, $text-color);
     font-family: $font-cookie;
     text-align: center;
+  }
+  .the-carousel {
+    max-width: 500px;
   }
 }
 </style>

@@ -2,17 +2,15 @@
   <div class="recipe">
     <span class="recipe__title"> {{ fullRecipe.strMeal }} </span>
 
-    <a class="recipe__youtube" :href="fullRecipe.strYoutube" target="blank"
+    <img
+      class="recipe__img"
+      alt="example"
+      style="max-width: 200px"
+      :src="fullRecipe.strMealThumb"
+    /><a class="recipe__youtube" :href="fullRecipe.strYoutube" target="blank"
       ><a-icon type="youtube" />click me to show</a
     >
-
-    <span class="recipe__instruction"
-      ><img
-        class="recipe__img"
-        alt="example"
-        style="max-width: 200px"
-        :src="fullRecipe.strMealThumb"
-      />
+    <span class="recipe__instruction">
       {{ fullRecipe.strInstructions }}
     </span>
     <ul class="recipe__ingridients">
@@ -24,14 +22,6 @@
         {{ ingrid.strIngredient }}
       </li> -->
     </ul>
-    <!-- <a-card hoverable style="width: 240px">
-      <img slot="cover" alt="example" :src="randomMeal.strMealThumb" />
-      <a-card-meta :title="randomMeal.strMeal">
-        <template slot="description">
-          {{ randomMeal.strArea }}
-        </template>
-      </a-card-meta>
-    </a-card> -->
   </div>
 </template>
 
@@ -41,13 +31,15 @@ export default {
   name: "MealRecipe",
   data() {
     return {
-      fullRecipe: {},
+      fullRecipe: "",
+      ingridients: "",
     };
   },
 
   async created() {
     const recipe = await httpService.getMealById(this.$route.params.id);
     this.fullRecipe = recipe.meals[0];
+    console.log(this.fullRecipe);
   },
 };
 </script>

@@ -26,7 +26,7 @@ export default {
     };
   },
   async created() {
-    const { meals } = await httpService.getRandomMeal(this.$route.params.id);
+    const { meals } = await httpService.getRandomMeal();
     this.randomMeal = meals[0];
   },
 };
