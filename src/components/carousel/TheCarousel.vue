@@ -18,14 +18,14 @@
         <a-icon type="right-circle" />
       </div>
       <div>
-        <a-card hoverable style="width: 240px">
+        <!-- <a-card hoverable style="width: 240px">
           <img slot="cover" alt="example" src="" />
           <a-card-meta title="">
             <template slot="description">
               {{ randomMeal.strArea }}
             </template>
           </a-card-meta>
-        </a-card>
+        </a-card> -->
       </div>
     </a-carousel>
   </div>
@@ -42,7 +42,6 @@ export default {
   async created() {
     const latestMeals = await httpService.getLatestMeals();
     this.latestList = latestMeals;
-    console.log(this.latestList);
   },
 };
 </script>

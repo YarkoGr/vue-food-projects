@@ -2,51 +2,91 @@
   <div class="recipe">
     <span class="recipe__title"> {{ fullRecipe.strMeal }} </span>
 
-    <img
-      class="recipe__img"
-      alt="example"
-      style="max-width: 200px"
-      :src="fullRecipe.strMealThumb"
-    /><a class="recipe__youtube" :href="fullRecipe.strYoutube" target="blank"
+    <div class="recipe__details">
+      <img
+        class="recipe__details-img"
+        alt="example"
+        style="max-width: 200px"
+        :src="fullRecipe.strMealThumb"
+      />
+      <div class="recipe__details-ingridients">
+        <ul class="recipe__details-ingridients-list">
+          <li
+            class="recipe__ingridients-list-item"
+            v-for="(ingridient, idx) in sortIngridients"
+            :key="idx"
+          >
+            {{ ingridient }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="recipe__details-measure">
+        <ul class="recipe__details-measure-list">
+          <li
+            class="recipe__details-measure-list-item"
+            v-for="(measure, idx) in sortMeasure"
+            :key="idx"
+          >
+            {{ measure }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a class="recipe__youtube" :href="fullRecipe.strYoutube" target="blank"
       ><a-icon type="youtube" />click me to show</a
     >
     <span class="recipe__instruction">
       {{ fullRecipe.strInstructions }}
     </span>
-    <ul class="recipe__ingridients">
-      <!-- <li
-        class="recipe__ingridients-list"
-        v-for="ingrid in fullRecipe"
-        :key="ingrid.idMeal"
-      >
-        {{ ingrid.strIngredient }}
-      </li> -->
-    </ul>
   </div>
 </template>
 
 <script>
 import { httpService } from "../http/httpService";
+import { pickBy } from "lodash";
 export default {
   name: "MealRecipe",
   data() {
     return {
       fullRecipe: "",
-      ingridients: "",
     };
+  },
+
+  computed: {
+    sortIngridients: function () {
+      const arr = [];
+      const listRecipe = pickBy(this.fullRecipe, (value, key) =>
+        key.startsWith("strIngredient")
+      );
+      for (let i in listRecipe) {
+        if (listRecipe[i]) {
+          arr.push(listRecipe[i]);
+        }
+      }
+      return arr;
+    },
+    sortMeasure: function () {
+      const arr = [];
+      const listRecipe = pickBy(this.fullRecipe, (value, key) =>
+        key.startsWith("strMeasure")
+      );
+      for (let i in listRecipe) {
+        if (listRecipe[i]) {
+          arr.push(listRecipe[i]);
+        }
+      }
+      return arr;
+    },
   },
 
   async created() {
     const recipe = await httpService.getMealById(this.$route.params.id);
     this.fullRecipe = recipe.meals[0];
-    console.log(this.fullRecipe);
   },
 };
 </script>
 
 <style lang="scss">
-.recipe {
-  @include flex($direction: column);
-  color: $main-color;
-}
+@import "../styles/views/MealRecipe.scss";
 </style>
