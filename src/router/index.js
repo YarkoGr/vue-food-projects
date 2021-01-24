@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import { routesPath, routesNames } from "./routes";
 
 const Blog = () =>
-    import ( /* webpackChunkName: "blog" */ "../views/Blog");
+    import ( /* webpackChunkName: "blog" */ "../views/Blog.vue");
 const Country = () =>
     import ( /* webpackChunkName: "country" */ "../views/Country.vue");
 const Meals = () =>

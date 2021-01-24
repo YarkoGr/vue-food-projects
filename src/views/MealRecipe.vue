@@ -4,9 +4,10 @@
 
     <div class="recipe__details">
       <img
+        slot="cover"
         class="recipe__details-img"
         alt="example"
-        style="max-width: 200px"
+        style="max-width: 240px"
         :src="fullRecipe.strMealThumb"
       />
       <div class="recipe__details-ingridients">
@@ -36,7 +37,7 @@
     <a class="recipe__youtube" :href="fullRecipe.strYoutube" target="blank"
       ><a-icon type="youtube" />click me to show</a
     >
-    <span class="recipe__instruction">
+    <span class="recipe__instruction container">
       {{ fullRecipe.strInstructions }}
     </span>
   </div>
