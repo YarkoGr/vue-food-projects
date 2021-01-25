@@ -41,5 +41,5 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../styles/views/categoryMeals";
+@import "../styles/views/categoryMeals.scss";
 </style>
