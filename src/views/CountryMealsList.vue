@@ -43,5 +43,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/views/countryMealsList.scss";
+@import "~@/styles/views/countryMealsList.scss";
 </style>
