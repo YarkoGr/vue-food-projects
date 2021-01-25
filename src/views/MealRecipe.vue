@@ -89,5 +89,32 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~@/styles/views/mealRecipe.scss";
+.recipe {
+  @include flex($direction: column);
+  color: $main-color;
+  text-align: center;
+  padding: 25px 0;
+  &__title {
+    @include text($h32, 400, $main-color);
+    font-style: italic;
+    font-family: "Cookie";
+    margin-bottom: 25px;
+  }
+  &__details {
+    @include flex(space-around);
+    margin-bottom: 25px;
+  }
+  &__details-img {
+    border: 3px solid $main-color;
+  }
+  &__youtube {
+    @include flex(center, center);
+    margin-bottom: 25px;
+    width: auto;
+  }
+  .anticon-youtube {
+    font-size: 36px;
+    margin-right: 25px;
+  }
+}
 </style>
