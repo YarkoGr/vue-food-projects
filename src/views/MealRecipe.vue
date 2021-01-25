@@ -89,5 +89,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/views/MealRecipe.scss";
+@import "../styles/views/mealRecipe.scss";
 </style>

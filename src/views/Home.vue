@@ -7,7 +7,7 @@
     />
     <div class="home__wrapper">
       <h1 class="home__title">Food from around the world</h1>
-      <the-carousel />
+      <!-- <the-carousel /> -->
     </div>
     <img
       class="home__img"
@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import TheCarousel from "../components/carousel/TheCarousel.vue";
+// import TheCarousel from "../components/carousel/TheCarousel.vue";
 export default {
-  components: { TheCarousel },
+  // components: { TheCarousel },
   name: "Home",
 };
 </script>

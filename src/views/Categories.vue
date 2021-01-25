@@ -5,6 +5,12 @@
         class="categories__list-item"
         v-for="category in categorysList"
         :key="category.strCategory"
+        @click="
+          $router.push({
+            name: 'CategoryMeals',
+            params: { category: category.strCategory },
+          })
+        "
       >
         <a-card>
           <img slot="cover" alt="example" :src="category.strCategoryThumb" />
@@ -24,15 +30,11 @@ export default {
   data() {
     return {
       categorysList: "",
-      test: "",
     };
   },
   async created() {
     const findCategorys = await httpService.getAllCategorys();
     this.categorysList = findCategorys.categories;
-
-    const showTest = await httpService.getTest("Pasta");
-    this.test = showTest.meals;
   },
 };
 </script>

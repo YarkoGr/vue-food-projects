@@ -1,9 +1,9 @@
 <template>
-  <div class="countryMealsList">
-    <span class="countryMealsList__title">{{ $route.params.country }}</span>
-    <ul class="countryMealsList__list container">
+  <div class="country-meals-list">
+    <span class="country-meals-list__title">{{ $route.params.country }}</span>
+    <ul class="country-meals-list__list container">
       <li
-        class="countryMealsList__list-item"
+        class="country-meals-list__list-item"
         v-for="meals in areaMeals"
         :key="meals.idMeal"
         @click="
@@ -16,7 +16,7 @@
         <a-card hoverable style="max-width: 240px">
           <img slot="cover" alt="example" :src="meals.strMealThumb" />
         </a-card>
-        <span class="countryMealsList__list-item-title">{{
+        <span class="country-meals-list__list-item-title">{{
           meals.strMeal
         }}</span>
       </li>
@@ -43,5 +43,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/views/CountryMealsList.scss";
+@import "../styles/views/countryMealsList.scss";
 </style>

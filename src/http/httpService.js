@@ -16,9 +16,10 @@ class HttpService {
         this._fetchData(`${mealUrls.areaMeals}${country}`);
     getMealById = (id) => this._fetchData(`${mealUrls.lookupId}${id}`);
     getAllCategorys = () => this._fetchData(mealUrls.allCategories);
-    getLatestMeals = () => this._fetchData(mealUrls.latestMeals);
-    getTest = (category) =>
+    getCategoryMeals = (category) =>
         this._fetchData(`${mealUrls.categoriesMeals}${category}`);
+    getLatestMeals = () => this._fetchData(mealUrls.latestMeals);
+
     // getCategories = async() => {
     //     const { meal: ingredientsList } = await this._fetchData(
     //         mealUrls.ingredientsList

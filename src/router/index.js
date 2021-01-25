@@ -21,6 +21,10 @@ const MealRecipe = () =>
     );
 const Categories = () =>
     import ( /* webpackChunkName: "categories" */ "../views/Categories.vue");
+
+const CategoriesMeals = () =>
+    import ( /* webpackChunkName: "categoryMeals" */ "../views/CategoryMeals.vue");
+
 Vue.use(VueRouter);
 
 const routes = [{
@@ -57,6 +61,11 @@ const routes = [{
         name: routesNames.mealRecipe,
         path: routesPath.mealRecipe,
         component: MealRecipe,
+    },
+    {
+        name: routesNames.categoryMeals,
+        path: routesPath.categoryMeals,
+        component: CategoriesMeals,
     },
     // {
     //   path: '/about',
