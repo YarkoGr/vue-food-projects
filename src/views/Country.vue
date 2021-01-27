@@ -1,41 +1,48 @@
 <template>
   <div class="country">
-    <ul class="country__list container">
-      <li
-        hoverable
-        class="country__list-item"
-        v-for="area in areasList"
-        :key="area.strArea"
+    <ul>
+      <XyzTransitionGroup
+        appear
+        class="country__list container"
+        xyz="fade duration-1 appear-front-1 small-1 appear-small-0 stagger-2 out-stagger-0"
       >
-        <a
-          class="country__list-item-link"
-          @click="
-            $router.push({
-              name: 'CountryMealsList',
-              params: { country: area.strArea },
-            })
-          "
+        <li
+          hoverable
+          class="country__list-item"
+          v-for="area in areasList"
+          :key="area.strArea"
         >
-          <span
-            v-if="area.strArea === 'Unknown'"
-            class="country__list-item-title"
-            >Slovakia</span
+          <a
+            class="country__list-item-link"
+            @click="
+              $router.push({
+                name: 'CountryMealsList',
+                params: { country: area.strArea },
+              })
+            "
           >
-          <span v-else class="country__list-item-title">{{
-            area.strArea
-          }}</span>
-          <img
-            slot="cover"
-            alt="example"
-            :src="require(`@/assets/flags/${area.strArea}.png`)"
-          />
-        </a>
-      </li>
+            <span
+              v-if="area.strArea === 'Unknown'"
+              class="country__list-item-title"
+              >Slovakia</span
+            >
+            <span v-else class="country__list-item-title">{{
+              area.strArea
+            }}</span>
+            <img
+              slot="cover"
+              alt="example"
+              :src="require(`@/assets/flags/${area.strArea}.png`)"
+            />
+          </a>
+        </li>
+      </XyzTransitionGroup>
     </ul>
   </div>
 </template>
 
 <script>
+import "@animxyz/core";
 import { httpService } from "../http/httpService";
 export default {
   name: "Country",
@@ -63,6 +70,11 @@ export default {
   &__list-item {
     padding: 15px;
     width: calc(100% / 24 * 4);
+    --xyz-rotate-z: 1turn;
+    --xyz-origin: center -200%;
+    --xyz-duration: 1s;
+    --xyz-scale-x: 0;
+    --xyz-scale-y: 0;
   }
   &__list-item-link {
     @include flex(center, center, column);

@@ -1,29 +1,38 @@
 <template>
   <div class="category-meals">
     <span class="category-meals__title">{{ $route.params.category }}</span>
-    <ul class="category-meals__list container">
-      <li
-        class="category-meals__list-item"
-        v-for="meal in categoryMealsList"
-        :key="meal.categoryMealsList"
-        @click="
-          $router.push({
-            name: 'MealRecipe',
-            params: { id: meal.idMeal },
-          })
-        "
+    <ul>
+      <XyzTransitionGroup
+        xyz="fade small out-down out-rotate-right appear-stagger"
+        class="category-meals__list container"
+        appear
       >
-        <a-card hoverable style="max-width: 240px">
-          <img slot="cover" alt="example" :src="meal.strMealThumb" />
-        </a-card>
-        <span class="category-meals__list-item-title">{{ meal.strMeal }}</span>
-      </li>
+        <li
+          class="category-meals__list-item"
+          v-for="meal in categoryMealsList"
+          :key="meal.idMeal"
+          @click="
+            $router.push({
+              name: 'MealRecipe',
+              params: { id: meal.idMeal },
+            })
+          "
+        >
+          <a-card hoverable style="max-width: 240px">
+            <img slot="cover" alt="example" :src="meal.strMealThumb" />
+          </a-card>
+          <span class="category-meals__list-item-title">{{
+            meal.strMeal
+          }}</span>
+        </li>
+      </XyzTransitionGroup>
     </ul>
   </div>
 </template>
 
 <script>
 import { httpService } from "../http/httpService";
+import "@animxyz/core";
 export default {
   name: "CategoryMeals",
   data() {

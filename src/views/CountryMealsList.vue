@@ -1,30 +1,37 @@
 <template>
   <div class="country-meals-list">
     <span class="country-meals-list__title">{{ $route.params.country }}</span>
-    <ul class="country-meals-list__list container">
-      <li
-        class="country-meals-list__list-item"
-        v-for="meals in areaMeals"
-        :key="meals.idMeal"
-        @click="
-          $router.push({
-            name: 'MealRecipe',
-            params: { id: meals.idMeal },
-          })
-        "
+    <ul>
+      <XyzTransitionGroup
+        class="country-meals-list__list container"
+        appear
+        xyz="duration-1 appear-front-1 small-1 appear-small-0 stagger-2 out-stagger-0"
       >
-        <a-card hoverable style="max-width: 240px">
-          <img slot="cover" alt="example" :src="meals.strMealThumb" />
-        </a-card>
-        <span class="country-meals-list__list-item-title">{{
-          meals.strMeal
-        }}</span>
-      </li>
+        <li
+          class="country-meals-list__list-item"
+          v-for="meals in areaMeals"
+          :key="meals.idMeal"
+          @click="
+            $router.push({
+              name: 'MealRecipe',
+              params: { id: meals.idMeal },
+            })
+          "
+        >
+          <a-card hoverable style="max-width: 240px">
+            <img slot="cover" alt="example" :src="meals.strMealThumb" />
+          </a-card>
+          <span class="country-meals-list__list-item-title">{{
+            meals.strMeal
+          }}</span>
+        </li>
+      </XyzTransitionGroup>
     </ul>
   </div>
 </template>
 
 <script>
+import "@animxyz/core";
 import { httpService } from "../http/httpService";
 export default {
   name: "CountryMealsList",
@@ -54,6 +61,9 @@ export default {
   &__list {
     width: 100%;
     @include flex(space-between, start, $wrap: wrap);
+    --xyz-duration: 0.6s;
+    --xyz-scale-x: 1.25;
+    --xyz-scale-y: 0;
   }
   &__list-item {
     @include flex(center, center, column);

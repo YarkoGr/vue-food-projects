@@ -1,29 +1,32 @@
 <template>
   <div class="categories">
-    <ul class="categories__list">
-      <li
-        class="categories__list-item"
-        v-for="category in categorysList"
-        :key="category.strCategory"
-        @click="
-          $router.push({
-            name: 'CategoryMeals',
-            params: { category: category.strCategory },
-          })
-        "
-      >
-        <a-card>
-          <img slot="cover" alt="example" :src="category.strCategoryThumb" />
-        </a-card>
-        <span class="categories__list-item-title">{{
-          category.strCategory
-        }}</span>
-      </li>
+    <ul>
+      <XyzTransitionGroup class="categories__list container" appear xyz="">
+        <li
+          class="categories__list-item"
+          v-for="category in categorysList"
+          :key="category.strCategory"
+          @click="
+            $router.push({
+              name: 'CategoryMeals',
+              params: { category: category.strCategory },
+            })
+          "
+        >
+          <a-card>
+            <img slot="cover" alt="example" :src="category.strCategoryThumb" />
+          </a-card>
+          <span class="categories__list-item-title">{{
+            category.strCategory
+          }}</span>
+        </li>
+      </XyzTransitionGroup>
     </ul>
   </div>
 </template>
 
 <script>
+import "@animxyz/core";
 import { httpService } from "../http/httpService";
 export default {
   name: "Categories",
@@ -48,6 +51,14 @@ export default {
   }
   &__list {
     @include flex(center, $wrap: wrap);
+    --xyz-rotate-x: 90deg;
+    --xyz-rotate-z: -180deg;
+    --xyz-origin: -200%;
+    --xyz-stagger: 0.1s;
+    --xyz-duration: 0.75s;
+    --xyz-perspective: 100px;
+    --xyz-translate-z: 100px;
+    --xyz-translate-y: 10vh;
   }
   &__list-item {
     width: calc(100% / 24 * 6);

@@ -43,9 +43,16 @@ export default {
   &__wrapper {
     @include flex(space-between);
     padding: 0 140px;
+    @media screen and (max-width: 1090px) {
+      @include flex(center, center, column);
+    }
   }
   &__logo {
     margin-right: 60px;
+    @media screen and (max-width: 1090px) {
+      margin-right: 0;
+      margin-bottom: 25px;
+    }
   }
 }
 </style>

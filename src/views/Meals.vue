@@ -1,10 +1,10 @@
 <template>
   <div class="meals">
     <a-card hoverable style="width: 240px">
-      <img slot="cover" alt="example" :src="randomMeal.strMealThumb" />
-      <a-card-meta :title="randomMeal.strMeal">
+      <img slot="cover" alt="example" :src="theRandomMeal.strMealThumb" />
+      <a-card-meta :title="theRandomMeal.strMeal">
         <template slot="description">
-          {{ randomMeal.strArea }}
+          {{ theRandomMeal.strArea }}
         </template>
       </a-card-meta>
     </a-card>
@@ -12,22 +12,18 @@
 </template>
 
 <script>
-import { httpService } from "../http/httpService";
-
+import { mapActions, mapState } from "vuex";
 export default {
   name: "Meals",
-  data() {
-    return {
-      randomMeal: {},
-      filters: {
-        categories: [],
-        ingredients: [],
-      },
-    };
+
+  computed: {
+    ...mapState("randomMeal", ["theRandomMeal"]),
+  },
+  methods: {
+    ...mapActions("randomMeal", ["fetchRandomMeal"]),
   },
   async created() {
-    const { meals } = await httpService.getRandomMeal();
-    this.randomMeal = meals[0];
+    await this.fetchRandomMeal();
   },
 };
 </script>
