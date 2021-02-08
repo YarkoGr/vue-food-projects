@@ -1,6 +1,10 @@
 <template>
-  <ul class="nav-bar">
-    <li class="nav-bar__item" v-for="route in routes" :key="route.name">
+  <a-menu class="nav-bar">
+    <a-menu-item
+      class="nav-bar__item"
+      v-for="route in routes"
+      :key="route.name"
+    >
       <router-link
         active-class="_active"
         exact
@@ -8,8 +12,8 @@
         :to="route.path"
         >{{ route.name }}</router-link
       >
-    </li>
-  </ul>
+    </a-menu-item>
+  </a-menu>
 </template>
 <script>
 export default {
@@ -48,6 +52,7 @@ export default {
   margin-bottom: 0;
   &__item {
     padding-right: 15px;
+    font-family: $font-cookie;
     &:last-child {
       padding-right: 0;
     }
@@ -58,5 +63,27 @@ export default {
       color: #1890ff;
     }
   }
+}
+.ant-menu-vertical {
+  border-right: none;
+}
+.ant-menu {
+  background: inherit;
+}
+.ant-menu-vertical {
+  margin: 0;
+}
+.ant-menu-item-selected > a,
+.ant-menu-item-selected > a:hover {
+  color: $main-color;
+}
+.ant-menu-item > a:hover {
+  color: $main-color;
+}
+.nav-bar__item-link:focus {
+  color: $main-color;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: inherit;
 }
 </style>

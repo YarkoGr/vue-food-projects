@@ -1,19 +1,19 @@
 <template>
-  <div class="recipe">
-    <span class="recipe__title"> {{ fullRecipe.strMeal }} </span>
+  <div class="meal-recipe">
+    <span class="meal-recipe__title"> {{ fullRecipe.strMeal }} </span>
 
-    <div class="recipe__details">
+    <div class="meal-recipe__details container">
       <img
         slot="cover"
-        class="recipe__details-img"
+        class="meal-recipe__details-img"
         alt="example"
         style="max-width: 240px"
         :src="fullRecipe.strMealThumb"
       />
-      <div class="recipe__details-ingridients">
-        <ul class="recipe__details-ingridients-list">
+      <div class="meal-recipe__details-ingridients">
+        <ul class="meal-recipe__details-ingridients-list">
           <li
-            class="recipe__ingridients-list-item"
+            class="meal-recipe__ingridients-list-item"
             v-for="(ingridient, idx) in sortIngridients"
             :key="idx"
           >
@@ -22,10 +22,10 @@
         </ul>
       </div>
 
-      <div class="recipe__details-measure">
+      <div class="meal-recipe__details-measure">
         <ul class="recipe__details-measure-list">
           <li
-            class="recipe__details-measure-list-item"
+            class="meal-recipe__details-measure-list-item"
             v-for="(measure, idx) in sortMeasure"
             :key="idx"
           >
@@ -34,10 +34,10 @@
         </ul>
       </div>
     </div>
-    <a class="recipe__youtube" :href="fullRecipe.strYoutube" target="blank"
+    <a class="meal-recipe__youtube" :href="fullRecipe.strYoutube" target="blank"
       ><a-icon type="youtube" />click me to show</a
     >
-    <span class="recipe__instruction container">
+    <span class="meal-recipe__instruction container">
       {{ fullRecipe.strInstructions }}
     </span>
   </div>
@@ -67,7 +67,7 @@ export default {
       }
       return arr;
     },
-    sortMeasure: function () {
+    sortMeasure() {
       const arr = [];
       const listRecipe = pickBy(this.fullRecipe, (value, key) =>
         key.startsWith("strMeasure")
@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style lang="scss">
-.recipe {
+.meal-recipe {
   @include flex($direction: column);
   color: $main-color;
   text-align: center;
@@ -101,11 +101,16 @@ export default {
     margin-bottom: 25px;
   }
   &__details {
-    @include flex(space-around);
+    @include flex(space-around, start);
     margin-bottom: 25px;
+    width: 100%;
   }
   &__details-img {
     border: 3px solid $main-color;
+    border-radius: 15px;
+  }
+  &__details-measure-list-item {
+    color: $text-color;
   }
   &__youtube {
     @include flex(center, center);
@@ -115,6 +120,9 @@ export default {
   .anticon-youtube {
     font-size: 36px;
     margin-right: 25px;
+  }
+  &__instruction {
+    line-height: 28px;
   }
 }
 </style>

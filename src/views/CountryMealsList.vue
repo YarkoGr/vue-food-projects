@@ -9,7 +9,7 @@
       >
         <li
           class="country-meals-list__list-item"
-          v-for="meals in areaMeals"
+          v-for="meals in displayedMeals"
           :key="meals.idMeal"
           @click="
             $router.push({
@@ -27,6 +27,26 @@
         </li>
       </XyzTransitionGroup>
     </ul>
+    <div class="pagination-btns">
+      <button class="btn" v-if="page != 1" @click="page--">Prev</button>
+      <button
+        type="button"
+        class="btn"
+        v-for="pageNumber in pages"
+        :key="pageNumber"
+        @click="page = pageNumber"
+      >
+        {{ pageNumber }}
+      </button>
+      <button
+        type="button"
+        @click="page++"
+        v-if="page < pages.length"
+        class="btn"
+      >
+        next
+      </button>
+    </div>
   </div>
 </template>
 
@@ -37,8 +57,37 @@ export default {
   name: "CountryMealsList",
   data() {
     return {
-      areaMeals: {},
+      areaMeals: [],
+      page: 1,
+      perPage: 8,
+      pages: [],
     };
+  },
+  methods: {
+    setPages() {
+      let numberOfPages = Math.ceil(this.areaMeals.length / this.perPage);
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
+    },
+    paginate(e) {
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = page * perPage - perPage;
+      let to = page * perPage;
+      return e.slice(from, to);
+    },
+  },
+  watch: {
+    areaMeals() {
+      this.setPages();
+    },
+  },
+  computed: {
+    displayedMeals() {
+      let forCount = this.areaMeals;
+      return this.paginate(forCount);
+    },
   },
   async created() {
     const areaMealsList = await httpService.getAreaMeals(
@@ -51,7 +100,10 @@ export default {
 
 <style lang="scss">
 .country-meals-list {
+  @import "../styles/btnGroupPagination.scss";
   @include flex(center, center, column);
+  background: linear-gradient($gradient-light, $gradient),
+    url("~@/assets/img/fork-bg.png") left top no-repeat;
   padding-top: 50px;
   padding-bottom: 50px;
   &__title {
@@ -67,7 +119,8 @@ export default {
   }
   &__list-item {
     @include flex(center, center, column);
-    padding-bottom: 30px;
+    width: calc((100% / 24) * 6 - 15px);
+    padding: 0 30px 30px 30px;
     cursor: pointer;
   }
   .ant-card {

@@ -62,6 +62,10 @@ export default {
 
 <style lang="scss">
 .country {
+  background: linear-gradient($gradient, $gradient),
+    url("~@/assets/img/meat-bg.png") bottom center no-repeat;
+  background-size: contain;
+
   @include flex(center, center);
   height: 100%;
   &__list {

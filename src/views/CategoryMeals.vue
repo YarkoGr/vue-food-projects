@@ -3,13 +3,13 @@
     <span class="category-meals__title">{{ $route.params.category }}</span>
     <ul>
       <XyzTransitionGroup
-        xyz="fade small out-down out-rotate-right appear-stagger"
+        xyz="fade skew-left"
         class="category-meals__list container"
         appear
       >
         <li
           class="category-meals__list-item"
-          v-for="meal in categoryMealsList"
+          v-for="meal in displayedMeals"
           :key="meal.idMeal"
           @click="
             $router.push({
@@ -18,8 +18,8 @@
             })
           "
         >
-          <a-card hoverable style="max-width: 240px">
-            <img slot="cover" alt="example" :src="meal.strMealThumb" />
+          <a-card class="category-meals__list-item-img">
+            <img slot="cover" alt="food-img" :src="meal.strMealThumb" />
           </a-card>
           <span class="category-meals__list-item-title">{{
             meal.strMeal
@@ -27,6 +27,26 @@
         </li>
       </XyzTransitionGroup>
     </ul>
+    <div class="pagination-btns">
+      <button class="btn" v-if="page != 1" @click="page--">Prev</button>
+      <button
+        type="button"
+        class="btn"
+        v-for="pageNumber in pages"
+        :key="pageNumber"
+        @click="page = pageNumber"
+      >
+        {{ pageNumber }}
+      </button>
+      <button
+        type="button"
+        @click="page++"
+        v-if="page < pages.length"
+        class="btn"
+      >
+        next
+      </button>
+    </div>
   </div>
 </template>
 
@@ -37,10 +57,41 @@ export default {
   name: "CategoryMeals",
   data() {
     return {
-      categoryMealsList: "",
+      categoryMealsList: [],
+      page: 1,
+      perPage: 8,
+      pages: [],
     };
   },
 
+  methods: {
+    setPages() {
+      let numberOfPages = Math.ceil(
+        this.categoryMealsList.length / this.perPage
+      );
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
+    },
+    paginate(e) {
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = page * perPage - perPage;
+      let to = page * perPage;
+      return e.slice(from, to);
+    },
+  },
+  watch: {
+    categoryMealsList() {
+      this.setPages();
+    },
+  },
+  computed: {
+    displayedMeals() {
+      let forCount = this.categoryMealsList;
+      return this.paginate(forCount);
+    },
+  },
   async created() {
     const categoryMeals = await httpService.getCategoryMeals(
       this.$route.params.category
@@ -51,6 +102,9 @@ export default {
 </script>
 <style lang="scss">
 .category-meals {
+  background: linear-gradient($gradient, $gradient),
+    url("~@/assets/img/three-meals.png") top center no-repeat;
+  @import "../styles/btnGroupPagination.scss";
   @include flex(center, center, column);
   padding-top: 50px;
   padding-bottom: 50px;
@@ -60,11 +114,12 @@ export default {
   }
   &__list {
     width: 100%;
-    @include flex(space-between, start, $wrap: wrap);
+    @include flex(stretch, start, $wrap: wrap);
   }
   &__list-item {
     @include flex(center, center, column);
-    padding-bottom: 30px;
+    width: calc((100% / 24) * 6 - 15px);
+    padding: 0 30px 30px 30px;
     cursor: pointer;
   }
   .ant-card {

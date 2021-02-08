@@ -14,7 +14,7 @@
           "
         >
           <a-card>
-            <img slot="cover" alt="example" :src="category.strCategoryThumb" />
+            <img slot="cover" alt="food-img" :src="category.strCategoryThumb" />
           </a-card>
           <span class="categories__list-item-title">{{
             category.strCategory
@@ -44,6 +44,8 @@ export default {
 
 <style lang="scss">
 .categories {
+  background: linear-gradient($gradient, $gradient),
+    url("~@/assets/img/corn-bg.png") bottom left no-repeat;
   padding-top: 20px;
   &__title {
     @include text($h60, 700, $main-color);

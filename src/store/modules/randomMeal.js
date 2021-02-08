@@ -8,6 +8,7 @@ const mutations = {
         state.theRandomMeal = {...payload };
     },
 };
+
 const actions = {
     fetchRandomMeal: async({ commit }) => {
         try {
