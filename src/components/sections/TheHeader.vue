@@ -1,12 +1,8 @@
 <template>
   <div class="the-header">
-    <div class="the-header__wrapper">
-      <a href="/">
-        <img
-          class="the-header__logo"
-          src="../../assets/img/FoodLogo.png"
-          alt=""
-        />
+    <div class="the-header__wrapper container">
+      <a class="the-header__logo" href="/">
+        <img :src="logo.src" :alt="logo.name" />
       </a>
       <nav-bar />
     </div>
@@ -17,6 +13,14 @@ import NavBar from "../NavBar/NavBar.vue";
 export default {
   components: { NavBar },
   name: "TheHeader",
+  data() {
+    return {
+      logo: {
+        src: require("@/assets/img/FoodLogo.png"),
+        name: "logo",
+      },
+    };
+  },
 };
 </script>
 <style lang="scss">
@@ -41,18 +45,21 @@ export default {
     right: 0;
   }
   &__wrapper {
-    @include flex(space-between);
-    padding: 0 140px;
-    @media screen and (max-width: 1090px) {
+    @include flex(space-between, center);
+    @media screen and (max-width: 1200px) {
       @include flex(center, center, column);
     }
   }
   &__logo {
     margin-right: 60px;
-    @media screen and (max-width: 1090px) {
+    @media screen and (max-width: 1200px) {
       margin-right: 0;
       margin-bottom: 25px;
     }
+  }
+  &__btn-login {
+    min-height: 50px;
+    padding: 0 50px;
   }
 }
 </style>

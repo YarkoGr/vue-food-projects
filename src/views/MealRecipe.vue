@@ -108,6 +108,9 @@ export default {
   &__details-img {
     border: 3px solid $main-color;
     border-radius: 15px;
+    &:hover {
+      transform: scale(1.8);
+    }
   }
   &__details-measure-list-item {
     color: $text-color;
