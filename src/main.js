@@ -4,6 +4,7 @@ import "ant-design-vue/dist/antd.css";
 import Antd from "ant-design-vue";
 import VueAnimXYZ from "@animxyz/vue";
 import { Plugin } from "vue-responsive-video-background-player";
+import "./plugins/firebase.js";
 
 import Vue from "vue";
 import App from "./App.vue";

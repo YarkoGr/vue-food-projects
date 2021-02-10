@@ -51,15 +51,18 @@
             formInline.passwordRepeat === ''
           "
         >
-          Log in
+          Register
         </a-button>
       </a-form-model-item>
     </a-form-model>
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+// import firebase from "firebase/app";
 export default {
   name: "TheRegister",
+
   data() {
     return {
       formInline: {
@@ -70,11 +73,17 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["signUpAction"]),
     handleSubmit() {
       if (this.formInline.password != this.formInline.passwordRepeat) {
         alert("invaild repeat password");
+      } else {
+        this.signUpAction({
+          email: this.formInline.email,
+          password: this.formInline.password,
+        });
+        alert("Success");
       }
-      console.log(this.formInline.email, this.formInline.password);
     },
   },
 };
