@@ -52,6 +52,7 @@ export default {
     font-family: $font-cookie;
   }
   &__list {
+    overflow: hidden;
     @include flex(center, $wrap: wrap);
     --xyz-rotate-x: 90deg;
     --xyz-rotate-z: -180deg;
@@ -59,8 +60,6 @@ export default {
     --xyz-stagger: 0.1s;
     --xyz-duration: 0.75s;
     --xyz-perspective: 100px;
-    --xyz-translate-z: 100px;
-    --xyz-translate-y: 10vh;
   }
   &__list-item {
     width: calc(100% / 24 * 6);

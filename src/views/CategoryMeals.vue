@@ -31,7 +31,7 @@
       <button class="btn" v-if="page != 1" @click="page--">Prev</button>
       <button
         type="button"
-        class="btn"
+        class="btn active"
         v-for="pageNumber in pages"
         :key="pageNumber"
         @click="page = pageNumber"
@@ -115,6 +115,7 @@ export default {
   &__list {
     width: 100%;
     @include flex(stretch, start, $wrap: wrap);
+    overflow: hidden;
   }
   &__list-item {
     @include flex(center, center, column);

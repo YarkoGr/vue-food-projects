@@ -24,6 +24,16 @@ const Categories = () =>
 
 const CategoriesMeals = () =>
     import ( /* webpackChunkName: "categoryMeals" */ "../views/CategoryMeals.vue");
+const TheLogin = () =>
+    import (
+        /* webpackChunkName: "categoryMeals" */
+        "../components/authentication/TheLogin.vue"
+    );
+const TheRegister = () =>
+    import (
+        /* webpackChunkName: "categoryMeals" */
+        "../components/authentication/TheRegister.vue"
+    );
 
 Vue.use(VueRouter);
 
@@ -66,6 +76,16 @@ const routes = [{
         name: routesNames.categoryMeals,
         path: routesPath.categoryMeals,
         component: CategoriesMeals,
+    },
+    {
+        name: routesNames.login,
+        path: routesPath.login,
+        component: TheLogin,
+    },
+    {
+        name: routesNames.register,
+        path: routesPath.register,
+        component: TheRegister,
     },
     // {
     //   path: '/about',

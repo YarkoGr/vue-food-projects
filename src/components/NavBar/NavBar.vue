@@ -59,9 +59,6 @@ export default {
   }
   &__item-link {
     @include text($h32, 400, $text-color);
-    &:focus {
-      color: #1890ff;
-    }
   }
 }
 .ant-menu-vertical {

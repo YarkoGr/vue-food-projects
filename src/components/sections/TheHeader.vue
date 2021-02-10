@@ -5,13 +5,15 @@
         <img :src="logo.src" :alt="logo.name" />
       </a>
       <nav-bar />
+      <auth-buttons />
     </div>
   </div>
 </template>
 <script>
+import AuthButtons from "../authentication/AuthButtons.vue";
 import NavBar from "../NavBar/NavBar.vue";
 export default {
-  components: { NavBar },
+  components: { NavBar, AuthButtons },
   name: "TheHeader",
   data() {
     return {

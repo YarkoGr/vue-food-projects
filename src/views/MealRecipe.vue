@@ -108,6 +108,7 @@ export default {
   &__details-img {
     border: 3px solid $main-color;
     border-radius: 15px;
+    transition: transform 0.5s ease;
     &:hover {
       transform: scale(1.8);
     }
