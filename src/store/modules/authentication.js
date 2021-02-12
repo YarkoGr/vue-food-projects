@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 
-const initialState = () => {
-    return { user: null, error: null };
+const state = () => {
+    return { user: "", error: "" };
 };
 
 const mutations = {
@@ -25,12 +25,41 @@ const actions = {
                 commit("setError", error.message);
             });
     },
+    signInAction({ commit }, payload) {
+        return firebase
+            .auth()
+            .signInWithEmailAndPassword(payload.email, payload.password)
+            .then((response) => {
+                commit("setUser", response.user);
+            })
+            .catch((error) => {
+                commit("setError", error.message);
+            });
+    },
+    signOutAction({ commit }) {
+        return firebase
+            .auth()
+            .signOut()
+            .then(() => {
+                commit("setUser", null);
+            })
+            .catch((error) => {
+                commit("setError", error.message);
+            });
+    },
 };
 
-const getters = {};
+const getters = {
+    getUser(state) {
+        return state.user;
+    },
+    isUserAuth(state) {
+        return !!state.user;
+    },
+};
 
 export default {
-    initialState,
+    state,
     mutations,
     actions,
     getters,

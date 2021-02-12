@@ -59,7 +59,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
-// import firebase from "firebase/app";
+
 export default {
   name: "TheRegister",
 
@@ -82,10 +82,13 @@ export default {
           email: this.formInline.email,
           password: this.formInline.password,
         });
-        alert("Success");
+        alert("Success", "Now you can login in system");
       }
     },
   },
+  // computed: {
+  //   ...mapActions([["isUserAuth"]]),
+  // },
 };
 </script>
 <style lang="scss">

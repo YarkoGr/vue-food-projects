@@ -20,7 +20,7 @@ export default {
           path: "/login",
         },
         {
-          name: "Regiter",
+          name: "Register",
           path: "/register",
         },
       ],
