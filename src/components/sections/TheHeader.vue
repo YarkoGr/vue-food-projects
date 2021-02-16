@@ -5,6 +5,12 @@
         <img :src="logo.src" :alt="logo.name" />
       </a>
       <nav-bar />
+      <!-- <div class="counter-wrap" v-if="isUserAuth">
+        <the-badge />
+      </div> -->
+      <div class="counter-wrap">
+        <the-badge />
+      </div>
       <auth-buttons />
     </div>
   </div>
@@ -12,8 +18,10 @@
 <script>
 import AuthButtons from "../authentication/AuthButtons.vue";
 import NavBar from "../NavBar/NavBar.vue";
+import { mapGetters } from "vuex";
+import TheBadge from "../TheBadge/TheBadge.vue";
 export default {
-  components: { NavBar, AuthButtons },
+  components: { NavBar, AuthButtons, TheBadge },
   name: "TheHeader",
   data() {
     return {
@@ -22,6 +30,9 @@ export default {
         name: "logo",
       },
     };
+  },
+  computed: {
+    ...mapGetters(["isUserAuth"]),
   },
 };
 </script>
@@ -62,6 +73,11 @@ export default {
   &__btn-login {
     min-height: 50px;
     padding: 0 50px;
+  }
+  .auth-buttons {
+    position: absolute;
+    bottom: -14px;
+    right: 38%;
   }
 }
 </style>

@@ -9,6 +9,7 @@ export const routesNames = {
     categoryMeals: "CategoryMeals",
     login: "Login",
     register: "Register",
+    favorites: "Favorites",
 };
 
 export const routesPath = {
@@ -22,4 +23,5 @@ export const routesPath = {
     categoryMeals: "/categories/:category",
     login: "/login",
     register: "/register",
+    favorites: "/favorites",
 };

@@ -41,11 +41,20 @@ const actions = {
             .auth()
             .signOut()
             .then(() => {
-                commit("setUser", null);
+                commit("yarn ", null);
             })
             .catch((error) => {
                 commit("setError", error.message);
             });
+    },
+    authAction({ commit }) {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                commit("setUser", user);
+            } else {
+                commit("setUser", null);
+            }
+        });
     },
 };
 

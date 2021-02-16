@@ -34,6 +34,11 @@ const TheRegister = () =>
         /* webpackChunkName: "categoryMeals" */
         "../components/authentication/TheRegister.vue"
     );
+const TheFavorites = () =>
+    import (
+        /* webpackChunkName: "categoryMeals" */
+        "../views/TheFavorites.vue"
+    );
 
 Vue.use(VueRouter);
 
@@ -87,14 +92,11 @@ const routes = [{
         path: routesPath.register,
         component: TheRegister,
     },
-    // {
-    //   path: '/about',
-    //   name: 'About',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    // }
+    {
+        name: routesNames.favorites,
+        path: routesPath.favorites,
+        component: TheFavorites,
+    },
 ];
 
 const router = new VueRouter({

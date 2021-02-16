@@ -1,7 +1,10 @@
 <template>
   <div class="meal-recipe">
-    <span class="meal-recipe__title"> {{ fullRecipe.strMeal }} </span>
-
+    <div class="meal-recipe__title-wrapper">
+      <span class="meal-recipe__title"> {{ fullRecipe.strMeal }} </span>
+      <!-- <favorite-btn v-if="isUserAuth" /> -->
+      <favorite-btn />
+    </div>
     <div class="meal-recipe__details container">
       <img
         slot="cover"
@@ -44,10 +47,13 @@
 </template>
 
 <script>
-import { httpService } from "../http/httpService";
+// import { httpService } from "../http/httpService";
 import { pickBy } from "lodash";
+import FavoriteBtn from "../components/FavoriteBtn/FavoriteBtn.vue";
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   name: "MealRecipe",
+  components: { FavoriteBtn },
   data() {
     return {
       fullRecipe: "",
@@ -79,11 +85,17 @@ export default {
       }
       return arr;
     },
+    ...mapGetters(["isUserAuth"]),
+    ...mapState("mealRecipe", ["mealFullRecipe"]),
+  },
+
+  methods: {
+    ...mapActions("mealRecipe", ["fetchMaleRecipe"]),
   },
 
   async created() {
-    const recipe = await httpService.getMealById(this.$route.params.id);
-    this.fullRecipe = recipe.meals[0];
+    await this.fetchMaleRecipe(this.$route.params.id);
+    this.fullRecipe = this.mealFullRecipe[0];
   },
 };
 </script>
@@ -94,11 +106,15 @@ export default {
   color: $main-color;
   text-align: center;
   padding: 25px 0;
+  &__title-wrapper {
+    @include flex(center, center);
+    margin-bottom: 25px;
+  }
   &__title {
     @include text($h32, 400, $main-color);
     font-style: italic;
     font-family: "Cookie";
-    margin-bottom: 25px;
+    margin-right: 20px;
   }
   &__details {
     @include flex(space-around, start);

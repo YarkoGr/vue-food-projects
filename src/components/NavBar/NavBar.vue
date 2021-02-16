@@ -1,33 +1,27 @@
 <template>
-  <div>
-    <a-menu class="nav-bar">
-      <a-menu-item
-        class="nav-bar__item"
-        v-for="route in routes"
-        :key="route.name"
+  <a-menu class="nav-bar">
+    <a-menu-item
+      class="nav-bar__item"
+      v-for="route in routes"
+      :key="route.name"
+      :class="[route.path === '/' ? 'ant-menu-item-selected' : '']"
+    >
+      <router-link
+        active-class="_active"
+        exact
+        class="nav-bar__item-link"
+        :to="route.path"
+        >{{ route.name }}</router-link
       >
-        <router-link
-          active-class="_active"
-          exact
-          class="nav-bar__item-link"
-          :to="route.path"
-          >{{ route.name }}</router-link
-        >
-      </a-menu-item>
-    </a-menu>
-    <div class="counter-wrap" v-if="isUserAuth">
-      <counter-icon></counter-icon>
-    </div>
-  </div>
+    </a-menu-item>
+  </a-menu>
 </template>
 <script>
-import CounterIcon from "../counterIcon/CounterIcon.vue";
-import { mapGetters } from "vuex";
 export default {
-  components: { CounterIcon },
   name: "NavBar",
   data() {
     return {
+      checkRoutePath: false,
       routes: [
         {
           name: "Home",
@@ -51,9 +45,6 @@ export default {
         },
       ],
     };
-  },
-  computed: {
-    ...mapGetters(["isUserAuth"]),
   },
 };
 </script>
