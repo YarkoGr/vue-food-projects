@@ -22,17 +22,32 @@ export default {
 
 <style lang="scss">
 .the-badge {
-  position: relative;
+  @include flex();
+  .anticon-heart {
+    transition: color 0.5s ease;
+  }
+  .ant-badge-count {
+    transition: background 0.5s ease;
+  }
+  :hover .anticon-heart {
+    color: $black;
+  }
+  :hover .ant-badge-count {
+    background: $main-color;
+  }
   &__img {
     svg {
-      width: 45px;
+      width: 40px;
       height: 100%;
     }
   }
   .ant-scroll-number {
     position: absolute;
-    top: -40px;
-    right: -10px;
+    top: 1px;
+    right: -6px;
+  }
+  a {
+    color: $main-color;
   }
 }
 </style>

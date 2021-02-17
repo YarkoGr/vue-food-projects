@@ -1,6 +1,6 @@
 <template>
   <div class="the-login">
-    <div class="the-login__form-wrapper container">
+    <div class="the-login__form-wrapper">
       <span v-if="isUserAuth" class="the-login__welcome"
         >Welcome: {{ getUser.email }}</span
       >
@@ -40,6 +40,7 @@
           >
             Log in
           </a-button>
+          <a-button v-if="isUserAuth" @click="signOut">Log Out</a-button>
         </a-form-model-item>
       </a-form-model>
     </div>
@@ -58,8 +59,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["signInAction"]),
-
+    ...mapActions(["signInAction", "signOutAction"]),
+    signOut() {
+      this.signOutAction();
+    },
     handleSubmit() {
       this.signInAction({
         email: this.formInline.email,
@@ -77,7 +80,7 @@ export default {
   height: 100%;
   @include flex(center, center);
   &__form-wrapper {
-    @include flex(start, center, column);
+    @include flex(start, start, column);
   }
   &__welcome {
     margin-bottom: 25px;

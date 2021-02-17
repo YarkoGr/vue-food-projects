@@ -1,10 +1,9 @@
 <template>
-  <a-menu class="nav-bar">
+  <a-menu class="nav-bar" v-model="current">
     <a-menu-item
       class="nav-bar__item"
       v-for="route in routes"
       :key="route.name"
-      :class="[route.path === '/' ? 'ant-menu-item-selected' : '']"
     >
       <router-link
         active-class="_active"
@@ -14,14 +13,22 @@
         >{{ route.name }}</router-link
       >
     </a-menu-item>
+    <a-menu-item class="nav-bar__item-link-favorite">
+      <!-- <the-badge v-if="isUserAuth" /> -->
+      <the-badge />
+    </a-menu-item>
   </a-menu>
 </template>
 <script>
+import { mapGetters } from "vuex";
+import TheBadge from "../TheBadge/TheBadge.vue";
 export default {
+  components: { TheBadge },
   name: "NavBar",
   data() {
     return {
       checkRoutePath: false,
+      current: ["Home"],
       routes: [
         {
           name: "Home",
@@ -46,6 +53,9 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters(["isUserAuth"]),
+  },
 };
 </script>
 <style lang="scss">
@@ -62,6 +72,9 @@ export default {
   &__item-link {
     @include text($h32, 400, $text-color);
   }
+  .ant-menu-item .anticon {
+    margin-right: 0;
+  }
 }
 .ant-menu-vertical {
   border-right: none;
@@ -69,8 +82,8 @@ export default {
 .ant-menu {
   background: inherit;
 }
-.ant-menu-vertical {
-  margin: 0;
+.ant-menu-vertical .ant-menu-item {
+  margin: 0 !important;
 }
 .ant-menu-item-selected > a,
 .ant-menu-item-selected > a:hover {

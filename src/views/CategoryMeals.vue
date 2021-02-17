@@ -102,14 +102,15 @@ export default {
 </script>
 <style lang="scss">
 .category-meals {
-  background: linear-gradient($gradient, $gradient),
-    url("~@/assets/img/three-meals.png") top center no-repeat;
+  background: linear-gradient($gradient-extra-light, $gradient-extra-light),
+    url("~@/assets/img/three-meals.png") center center no-repeat;
   @import "../styles/btnGroupPagination.scss";
   @include flex(center, center, column);
   padding-top: 50px;
   padding-bottom: 50px;
   &__title {
-    @include text($h32, 700, $text-color);
+    @include text($h60, 700, $text-color);
+    font-family: $font-cookie;
     margin-bottom: 30px;
   }
   &__list {
@@ -122,15 +123,23 @@ export default {
     width: calc((100% / 24) * 6 - 15px);
     padding: 0 30px 30px 30px;
     cursor: pointer;
+
+    &:hover .category-meals__list-item-title {
+      color: $bg-footer;
+    }
+    &:hover .ant-card-bordered {
+      border: 5px solid $gradient;
+    }
   }
   .ant-card {
     margin-bottom: 30px;
   }
   .ant-card-bordered {
-    border: 5px solid $main-color;
+    border: 5px solid $text-color;
   }
   &__list-item-title {
-    @include text($h28, 400, $text-color);
+    transition: color 0.5s ease;
+    @include text($h28, 400, $main-color);
     max-width: 240px;
     text-align: center;
   }

@@ -5,23 +5,17 @@
         <img :src="logo.src" :alt="logo.name" />
       </a>
       <nav-bar />
-      <!-- <div class="counter-wrap" v-if="isUserAuth">
-        <the-badge />
-      </div> -->
-      <div class="counter-wrap">
-        <the-badge />
-      </div>
-      <auth-buttons />
+      <modal-auth />
     </div>
   </div>
 </template>
 <script>
-import AuthButtons from "../authentication/AuthButtons.vue";
 import NavBar from "../NavBar/NavBar.vue";
 import { mapGetters } from "vuex";
-import TheBadge from "../TheBadge/TheBadge.vue";
+import ModalAuth from "../authentication/ModalAuth.vue";
+// import TheBadge from "../TheBadge/TheBadge.vue";
 export default {
-  components: { NavBar, AuthButtons, TheBadge },
+  components: { NavBar, ModalAuth },
   name: "TheHeader",
   data() {
     return {
@@ -78,6 +72,9 @@ export default {
     position: absolute;
     bottom: -14px;
     right: 38%;
+  }
+  .nav-bar {
+    margin-bottom: 20px;
   }
 }
 </style>
