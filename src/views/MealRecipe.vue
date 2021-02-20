@@ -2,8 +2,8 @@
   <div class="meal-recipe">
     <div class="meal-recipe__title-wrapper">
       <span class="meal-recipe__title"> {{ fullRecipe.strMeal }} </span>
-      <favorite-btn />
-      <!-- <favorite-btn v-if="isUserAuth" /> -->
+      <!-- <favorite-btn /> -->
+      <favorite-btn v-if="isUserAuth" />
     </div>
     <div class="meal-recipe__details container">
       <img

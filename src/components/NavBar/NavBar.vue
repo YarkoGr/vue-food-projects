@@ -14,8 +14,8 @@
       >
     </a-menu-item>
     <a-menu-item class="nav-bar__item-link-favorite">
-      <!-- <the-badge v-if="isUserAuth" /> -->
-      <the-badge />
+      <the-badge v-if="isUserAuth" />
+      <!-- <the-badge /> -->
     </a-menu-item>
   </a-menu>
 </template>

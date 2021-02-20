@@ -41,7 +41,7 @@ const actions = {
             .auth()
             .signOut()
             .then(() => {
-                commit("yarn ", null);
+                commit("setUser", null);
             })
             .catch((error) => {
                 commit("setError", error.message);

@@ -13,7 +13,7 @@
 import NavBar from "../NavBar/NavBar.vue";
 import { mapGetters } from "vuex";
 import ModalAuth from "../authentication/ModalAuth.vue";
-// import TheBadge from "../TheBadge/TheBadge.vue";
+
 export default {
   components: { NavBar, ModalAuth },
   name: "TheHeader",
