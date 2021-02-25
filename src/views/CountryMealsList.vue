@@ -31,7 +31,7 @@
       <button class="btn" v-if="page != 1" @click="page--">Prev</button>
       <button
         type="button"
-        class="btn"
+        class="btn numbers"
         v-for="pageNumber in pages"
         :key="pageNumber"
         @click="page = pageNumber"
@@ -112,27 +112,45 @@ export default {
   }
   &__list {
     width: 100%;
-    @include flex(space-between, start, $wrap: wrap);
+    @include flex(start, start, $wrap: wrap);
     --xyz-duration: 0.6s;
     --xyz-scale-x: 1.25;
     --xyz-scale-y: 0;
   }
   &__list-item {
     @include flex(center, center, column);
-    width: calc((100% / 24) * 6 - 15px);
-    padding: 0 30px 30px 30px;
+    width: calc((100% / 24) * 6);
+    padding: 0 15px 15px 15px;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+      width: calc((100% / 24) * 8);
+    }
+    &:hover .country-meals-list__list-item-title {
+      border: 1px solid $main-color;
+    }
   }
   .ant-card {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .ant-card-bordered {
-    border: 5px solid $main-color;
+    border: 3px solid $main-color;
   }
   &__list-item-title {
     @include text($h28, 400, $text-color);
     max-width: 240px;
     text-align: center;
+    border: 1px solid transparent;
+    transition: border-color 0.5s ease;
+    @media screen and (max-width: 820px) {
+      font-size: $h20;
+    }
+  }
+  .pagination-btns {
+    .numbers {
+      @media screen and (max-width: 820px) {
+        display: none;
+      }
+    }
   }
 }
 </style>

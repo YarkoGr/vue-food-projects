@@ -6,6 +6,7 @@
       </a>
       <nav-bar />
       <modal-auth />
+      <the-burger />
     </div>
   </div>
 </template>
@@ -13,9 +14,9 @@
 import NavBar from "../NavBar/NavBar.vue";
 import { mapGetters } from "vuex";
 import ModalAuth from "../authentication/ModalAuth.vue";
-
+import TheBurger from "../TheBurger/TheBurger.vue";
 export default {
-  components: { NavBar, ModalAuth },
+  components: { NavBar, ModalAuth, TheBurger },
   name: "TheHeader",
   data() {
     return {
@@ -73,8 +74,23 @@ export default {
     bottom: -14px;
     right: 38%;
   }
-  .nav-bar {
+  &__wrapper > .nav-bar {
     margin-bottom: 20px;
+    @media screen and (max-width: 560px) {
+      display: none;
+    }
+  }
+}
+.the-burger {
+  display: none;
+  @media screen and (max-width: 560px) {
+    display: flex;
+  }
+  .bm-burger-bars {
+    background-color: $main-color;
+  }
+  .bm-burger-button {
+    top: 142px;
   }
 }
 </style>

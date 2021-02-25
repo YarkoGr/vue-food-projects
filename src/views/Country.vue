@@ -65,7 +65,7 @@ export default {
   background: linear-gradient($gradient, $gradient),
     url("~@/assets/img/meat-bg.png") bottom center no-repeat;
   background-size: contain;
-
+  overflow: hidden;
   @include flex(center, center);
   height: 100%;
   &__list {
@@ -79,6 +79,12 @@ export default {
     --xyz-duration: 1s;
     --xyz-scale-x: 0;
     --xyz-scale-y: 0;
+    @media screen and (max-width: 600px) {
+      width: calc(100% / 24 * 6);
+    }
+    @media screen and (max-width: 400px) {
+      width: calc(100% / 24 * 8);
+    }
   }
   &__list-item-link {
     @include flex(center, center, column);

@@ -1,7 +1,7 @@
 <template>
   <div class="the-register">
     <a-form-model
-      layout="inline"
+      layout="vertical"
       :model="formInline"
       @submit="handleSubmit"
       @submit.native.prevent
@@ -95,5 +95,11 @@ export default {
 .the-register {
   height: 100%;
   @include flex(center, center);
+  .ant-form {
+    width: 80%;
+  }
+  .ant-btn:not(:last-child) {
+    margin-right: 25px;
+  }
 }
 </style>

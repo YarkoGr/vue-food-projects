@@ -31,7 +31,7 @@
       <button class="btn" v-if="page != 1" @click="page--">Prev</button>
       <button
         type="button"
-        class="btn active"
+        class="btn active numbers"
         v-for="pageNumber in pages"
         :key="pageNumber"
         @click="page = pageNumber"
@@ -120,28 +120,41 @@ export default {
   }
   &__list-item {
     @include flex(center, center, column);
-    width: calc((100% / 24) * 6 - 15px);
-    padding: 0 30px 30px 30px;
+    width: calc((100% / 24) * 6);
+    padding: 0 15px 15px 15px;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+      width: calc((100% / 24) * 8);
+    }
 
     &:hover .category-meals__list-item-title {
       color: $bg-footer;
     }
     &:hover .ant-card-bordered {
-      border: 5px solid $gradient;
+      border: 3px solid $gradient;
     }
   }
   .ant-card {
     margin-bottom: 30px;
   }
   .ant-card-bordered {
-    border: 5px solid $text-color;
+    border: 3px solid $text-color;
   }
   &__list-item-title {
     transition: color 0.5s ease;
     @include text($h28, 400, $main-color);
     max-width: 240px;
     text-align: center;
+    @media screen and (max-width: 820px) {
+      font-size: $h20;
+    }
+  }
+  .pagination-btns {
+    .numbers {
+      @media screen and (max-width: 820px) {
+        display: none;
+      }
+    }
   }
 }
 </style>

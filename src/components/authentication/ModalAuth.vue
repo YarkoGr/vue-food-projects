@@ -39,5 +39,13 @@ export default {
 </script>
 <style lang="scss">
 .modal-auth {
+  .ant-btn-primary {
+    background-color: $main-color;
+    border: none;
+    &:hover {
+      background-color: $gradient-extra-light;
+      color: $main-color;
+    }
+  }
 }
 </style>

@@ -28,6 +28,7 @@ export default {
   }
   .ant-badge-count {
     transition: background 0.5s ease;
+    background: $some;
   }
   :hover .anticon-heart {
     color: $black;
@@ -43,7 +44,7 @@ export default {
   }
   .ant-scroll-number {
     position: absolute;
-    top: 1px;
+    top: -33px;
     right: -6px;
   }
   a {
