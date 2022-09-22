@@ -24,8 +24,12 @@
             <span
               v-if="area.strArea === 'Unknown'"
               class="country__list-item-title"
-              >Slovakia</span
-            >
+              >Slovakia
+              </span>
+            <span v-else-if="area.strArea === 'Russian'"
+              class="country__list-item-title">
+              nobody
+            </span>
             <span v-else class="country__list-item-title">{{
               area.strArea
             }}</span>
